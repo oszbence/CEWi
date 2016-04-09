@@ -1,6 +1,7 @@
 package hu.cewi.client.user.ui.main;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,6 +10,8 @@ import javax.inject.Inject;
 import dagger.Module;
 import hu.cewi.client.user.CEWiApplication;
 import hu.cewi.client.user.R;
+import hu.cewi.client.user.ui.devices.DeviceActivity;
+import hu.cewi.client.user.ui.login.LoginActivity;
 
 @Module
 public class MainActivity extends Activity implements MainScreen {
@@ -38,11 +41,11 @@ public class MainActivity extends Activity implements MainScreen {
     }
 
     public void onShowDevices(View v){
-        //startActivity(new Intent(this, DeviceActivity.class));
+        startActivity(new Intent(this, DeviceActivity.class));
     }
 
     public void onShowAccounts(View v){
-        //startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     public void onLogoutClicked(View v){
