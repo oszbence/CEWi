@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -41,14 +42,34 @@ public class MainActivity extends Activity implements MainScreen {
     }
 
     public void onShowDevices(View v){
-        startActivity(new Intent(this, DeviceActivity.class));
+        mainPresenter.showDevices();
     }
 
     public void onShowAccounts(View v){
-        startActivity(new Intent(this, LoginActivity.class));
+        mainPresenter.showLogin();
     }
 
     public void onLogoutClicked(View v){
+        mainPresenter.logout();
+    }
 
+    @Override
+    public void showDevices() {
+        startActivity(new Intent(this, DeviceActivity.class));
+    }
+
+    @Override
+    public void showLogin() {
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    @Override
+    public void showLogoutResponse(final String response) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
