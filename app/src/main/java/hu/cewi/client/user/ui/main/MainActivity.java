@@ -65,11 +65,17 @@ public class MainActivity extends Activity implements MainScreen {
 
     @Override
     public void showLogoutResponse(final String response) {
+        // runOnUiThread is not required as
+        // @Subscribe(threadMode = ThreadMode.MAIN) of EventBus
+        // has switched back to UI thread in the Presenter
+        /*
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
             }
         });
+        */
+        Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
     }
 }

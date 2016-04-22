@@ -1,6 +1,9 @@
 package hu.cewi.client.user.interactor.account;
 
 import hu.cewi.client.user.CEWiApplication;
+import hu.cewi.client.user.interactor.account.event.LogoutResponseEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by Bence on 2016.04.09..
@@ -11,30 +14,16 @@ public class AccountInteractor {
         CEWiApplication.injector.inject(this);
     }
 
-    /**
-     * Synchronous call to server
-     * @return true upon success
-     */
-    public boolean loginUser(String userID, String passwd) {
+    public void loginUser(String userID, String passwd) {
         // TODO
-        return false;
     }
 
-    /**
-     * Synchronous call to server
-     * @return true upon success
-     */
-    public boolean logoutUser(String userID, String passwd) {
+    public void logoutUser(String userID, String passwd) {
         // TODO
-        return false;
+        EventBus.getDefault().post(new LogoutResponseEvent(false));
     }
 
-    /**
-     * Synchronous call to server
-     * @return true upon success
-     */
-    public boolean registerUser(String userID, String userName, String passwd) {
+    public void registerUser(String userID, String userName, String passwd) {
         // TODO
-        return false;
     }
 }

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
@@ -12,6 +15,7 @@ import hu.cewi.client.user.CEWiApplication;
 import hu.cewi.client.user.R;
 import hu.cewi.client.user.di.Network;
 import hu.cewi.client.user.interactor.account.AccountInteractor;
+import hu.cewi.client.user.interactor.account.event.LogoutResponseEvent;
 import hu.cewi.client.user.ui.Presenter;
 
 /**
@@ -59,19 +63,25 @@ public class MainPresenter extends Presenter<MainScreen> {
             networkExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    String response;
-                    if(accountInteractor.logoutUser(userID, pass)){
-                        response = ctx.getString(R.string.logoutSuccess);
-                    } else {
-                        response = ctx.getString(R.string.logoutFailed);
-                    }
-                    // Inform user
-                    screen.showLogoutResponse(response);
+                    accountInteractor.logoutUser(userID, pass);
+
                 }
             });
         } catch (NullPointerException e) {
             Log.e("Logout failed", "Cause:");
             e.printStackTrace();
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(final LogoutResponseEvent event) {
+        String response;
+        if(event.isSuccessful()){
+            response = ctx.getString(R.string.logoutSuccess);
+        } else {
+            response = ctx.getString(R.string.logoutFailed);
+        }
+        // Inform user
+        screen.showLogoutResponse(response);
     }
 }

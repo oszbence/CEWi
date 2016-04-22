@@ -9,6 +9,10 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
 }
 
+dependencies {
+    compile 'org.greenrobot:eventbus:3.0.0'
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
