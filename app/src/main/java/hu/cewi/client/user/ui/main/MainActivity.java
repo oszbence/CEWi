@@ -76,6 +76,6 @@ public class MainActivity extends Activity implements MainScreen {
             }
         });
         */
-        Toast.makeText(MainActivity.this, response, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
     }
 }
