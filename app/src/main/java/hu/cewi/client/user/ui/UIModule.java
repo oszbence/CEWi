@@ -10,6 +10,8 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import hu.cewi.client.user.di.Network;
+import hu.cewi.client.user.ui.devices.DevicePresenter;
+import hu.cewi.client.user.ui.login.LoginPresenter;
 import hu.cewi.client.user.ui.main.MainPresenter;
 
 /**
@@ -30,8 +32,20 @@ public class UIModule {
 
     @Provides
     @Singleton
-    public MainPresenter provideMainPresenter() {
-        return new MainPresenter();
+    public MainPresenter provideMainPresenter(MainPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @Singleton
+    public LoginPresenter provideLoginPresenter(LoginPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @Singleton
+    public DevicePresenter provideDevicePresenter(DevicePresenter presenter) {
+        return presenter;
     }
 
     @Provides
