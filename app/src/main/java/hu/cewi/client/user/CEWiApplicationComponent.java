@@ -7,6 +7,8 @@ import hu.cewi.client.user.interactor.InteractorModule;
 import hu.cewi.client.user.interactor.account.AccountInteractor;
 import hu.cewi.client.user.interactor.device.DeviceInteractor;
 import hu.cewi.client.user.ui.UIModule;
+import hu.cewi.client.user.ui.devicecontent.DeviceContentActivity;
+import hu.cewi.client.user.ui.devicecontent.DeviceContentPresenter;
 import hu.cewi.client.user.ui.devices.DeviceActivity;
 import hu.cewi.client.user.ui.devices.DevicePresenter;
 import hu.cewi.client.user.ui.login.LoginActivity;
@@ -39,6 +41,10 @@ public interface CEWiApplicationComponent {
     void inject(DeviceActivity deviceActivity);
 
     void inject(DevicePresenter devicePresenter);
+
+    void inject(DeviceContentActivity deviceContentActivity);
+
+    void inject(DeviceContentPresenter deviceContentPresenter);
 
 
     void inject(AccountInteractor accountInteractor);

@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/cewiblue</item>
         <item name="colorPrimaryDark">@color/blue</item>
         <!--<item name="colorAccent">@color/colorAccent</item>-->
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorPrimary">@color/blue</item>
         <item name="android:textColor">@color/cewiblue</item>
     </style>
 

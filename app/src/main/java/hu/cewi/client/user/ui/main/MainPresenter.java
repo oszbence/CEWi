@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -37,11 +38,13 @@ public class MainPresenter extends Presenter<MainScreen> {
     public void attachScreen(MainScreen screen) {
         super.attachScreen(screen);
         CEWiApplication.injector.inject(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void detachScreen() {
         super.detachScreen();
+        EventBus.getDefault().unregister(this);
     }
 
     public void showDevices() {

@@ -12,12 +12,12 @@ import hu.cewi.client.user.interactor.device.DeviceInteractor;
 public class InteractorModule {
 
     @Provides
-    AccountInteractor provideAccountInteractor(AccountInteractor interactor) {
-        return interactor;
+    AccountInteractor provideAccountInteractor() {
+        return  new AccountInteractor();
     }
 
     @Provides
-    DeviceInteractor provideDeviceInteractor(DeviceInteractor interactor) {
-        return interactor;
+    DeviceInteractor provideDeviceInteractor() {
+        return new DeviceInteractor();
     }
 }
