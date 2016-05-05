@@ -13,6 +13,9 @@ import hu.cewi.client.user.ui.login.LoginActivity;
 import hu.cewi.client.user.ui.login.LoginPresenter;
 import hu.cewi.client.user.ui.main.MainActivity;
 import hu.cewi.client.user.ui.main.MainPresenter;
+import hu.cewi.client.user.ui.register.RegisterUserActivity;
+import hu.cewi.client.user.ui.register.RegisterUserPresenter;
+import hu.cewi.client.user.ui.register.RegisterUserScreen;
 
 /**
  * Created by Bence on 2016.04.08..
@@ -29,9 +32,14 @@ public interface CEWiApplicationComponent {
 
     void inject(LoginPresenter loginPresenter);
 
+    void inject(RegisterUserActivity registerUserActivity);
+
+    void inject(RegisterUserPresenter registerUserPresenter);
+
     void inject(DeviceActivity deviceActivity);
 
     void inject(DevicePresenter devicePresenter);
+
 
     void inject(AccountInteractor accountInteractor);
 

@@ -13,6 +13,7 @@ import hu.cewi.client.user.di.Network;
 import hu.cewi.client.user.ui.devices.DevicePresenter;
 import hu.cewi.client.user.ui.login.LoginPresenter;
 import hu.cewi.client.user.ui.main.MainPresenter;
+import hu.cewi.client.user.ui.register.RegisterUserPresenter;
 
 /**
  * Created by Bence on 2016.04.08..
@@ -39,6 +40,12 @@ public class UIModule {
     @Provides
     @Singleton
     public LoginPresenter provideLoginPresenter(LoginPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @Singleton
+    public RegisterUserPresenter provideRegisterUserPresenter(RegisterUserPresenter presenter) {
         return presenter;
     }
 
