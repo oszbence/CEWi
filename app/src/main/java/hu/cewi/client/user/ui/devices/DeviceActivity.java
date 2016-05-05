@@ -5,14 +5,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
+import hu.cewi.client.user.CEWiApplication;
 import hu.cewi.client.user.R;
 
 public class DeviceActivity extends Activity implements DeviceScreen {
+
+    @Inject
+    DevicePresenter devicePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
+
+        CEWiApplication.injector.inject(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        devicePresenter.attachScreen(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        devicePresenter.detachScreen();
     }
 
     @Override
