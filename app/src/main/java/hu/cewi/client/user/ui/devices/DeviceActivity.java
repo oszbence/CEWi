@@ -1,16 +1,29 @@
 package hu.cewi.client.user.ui.devices;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import hu.cewi.client.user.CEWiApplication;
 import hu.cewi.client.user.R;
+import hu.cewi.client.user.model.Device;
+import hu.cewi.client.user.ui.devicecontent.DeviceContentActivity;
 
 public class DeviceActivity extends Activity implements DeviceScreen {
+
+    private ListView deviceListView;
+
+    private ArrayAdapter<Device> deviceListAdapter;
 
     @Inject
     DevicePresenter devicePresenter;
@@ -35,18 +48,46 @@ public class DeviceActivity extends Activity implements DeviceScreen {
         devicePresenter.detachScreen();
     }
 
+
     @Override
-    public void showGetDeviceContentResponse() {
+    public void showDevices(List<Device> devices) {
+        // TODO optimize
+        deviceListAdapter = new ArrayAdapter<Device>(this, R.layout.list_item,  devices);
+
+        deviceListView = (ListView) findViewById(R.id.deviceListView);
+        deviceListView.setAdapter(deviceListAdapter);
+        deviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final Device item = (Device) parent.getItemAtPosition(position);
+                // Start device control activity of selected device
+                Intent intent = new Intent(DeviceActivity.this, DeviceContentActivity.class);
+                // Pass ID of selected device
+                intent.putExtra("deviceID", item.id);
+                startActivity(intent);
+            }
+        });
 
     }
 
     @Override
-    public void showAddDeviceAccessResponse(String response) {
+    public void onAddDeviceAccessSuccess() {
+
+    }
+
+    @Override
+    public void onRemoveDeviceAccessSuccess() {
+
+    }
+
+    @Override
+    public void showError(String cause) {
+        // Toast failure cause
+        String response = getString(R.string.error) + "! " +
+                getString(R.string.cause) + ": " + cause;
         Toast.makeText(this, response, Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public void showRemoveDeviceAccessResponse(String response) {
-        Toast.makeText(this, response, Toast.LENGTH_LONG).show();
-    }
+    // TODO set menu
 }

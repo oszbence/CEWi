@@ -7,5 +7,7 @@ public interface LoginScreen {
 
     void showRegisterScreen();
 
-    void showLoginResponse(String response);
+    void onLoginSuccess();
+
+    void onLoginFailure(String cause);
 }

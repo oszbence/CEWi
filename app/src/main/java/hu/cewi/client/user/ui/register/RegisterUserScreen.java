@@ -5,5 +5,7 @@ package hu.cewi.client.user.ui.register;
  */
 public interface RegisterUserScreen {
 
-    void showRegisterUserResponse(String response);
+    void onRegisterUserSuccess();
+
+    void onRegisterUserFailure(String cause);
 }

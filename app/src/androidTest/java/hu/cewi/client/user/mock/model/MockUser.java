@@ -6,19 +6,19 @@ import com.orm.dsl.Table;
  * Created by Bence on 2016.05.05..
  */
 @Table
-public class Device {
+public class MockUser {
     private Long id;
 
-    String deviceID;
-    String deviceName;
-    public User owner;
+    String name;
+    String email;
 
-    public Device() {
+    public MockUser() {
 
     }
 
-    public Device(String deviceID, String deviceName) {
-
+    public MockUser(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     public Long getId() {

@@ -26,6 +26,10 @@
     <string name="logout">Logout</string>
     <string name="logoutSuccess">Logout successful</string>
     <string name="logoutFailed">Logout failed</string>
+    <string name="registerUserSuccess">Successful registration</string>
+    <string name="registerUserFailed">Registration failed</string>
+    <string name="cause">Cause</string>
+    <string name="error">Error</string>
     <string name="reconnect">Reconnect</string>
     <string name="failedToConnect">Failed to connect</string>
     <string name="qrFailure">Failed to read QR code</string>
