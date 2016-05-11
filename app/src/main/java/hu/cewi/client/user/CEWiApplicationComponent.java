@@ -6,6 +6,7 @@ import dagger.Component;
 import hu.cewi.client.user.interactor.InteractorModule;
 import hu.cewi.client.user.interactor.account.AccountInteractor;
 import hu.cewi.client.user.interactor.device.DeviceInteractor;
+import hu.cewi.client.user.network.NetworkModule;
 import hu.cewi.client.user.ui.UIModule;
 import hu.cewi.client.user.ui.devicecontent.DeviceContentActivity;
 import hu.cewi.client.user.ui.devicecontent.DeviceContentPresenter;
@@ -23,7 +24,7 @@ import hu.cewi.client.user.ui.register.RegisterUserScreen;
  * Created by Bence on 2016.04.08..
  */
 @Singleton
-@Component(modules = {UIModule.class, InteractorModule.class})
+@Component(modules = {UIModule.class, InteractorModule.class, NetworkModule.class})
 public interface CEWiApplicationComponent {
 
     void inject(MainActivity mainActivity);

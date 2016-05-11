@@ -2,6 +2,8 @@ package hu.cewi.client.user.mock;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
+
 import hu.cewi.client.user.model.LoginResponse;
 import hu.cewi.client.user.model.RegisterParams;
 import hu.cewi.client.user.network.AccountApi;
