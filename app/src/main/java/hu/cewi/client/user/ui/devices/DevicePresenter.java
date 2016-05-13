@@ -38,6 +38,7 @@ public class DevicePresenter extends Presenter<DeviceScreen> {
         super.attachScreen(screen);
         CEWiApplication.injector.inject(this);
         EventBus.getDefault().register(this);
+        getDevices();
     }
 
     @Override
@@ -46,7 +47,7 @@ public class DevicePresenter extends Presenter<DeviceScreen> {
         EventBus.getDefault().unregister(this);
     }
 
-    public void getDeviceContent(String deviceID) {
+    public void getDevices() {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -76,27 +77,27 @@ public class DevicePresenter extends Presenter<DeviceScreen> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetDevicesResponseEvent event) {
         if(event.isSuccessful()){
-
+            screen.showDevices(event.getDevices());
         } else {
-
+            screen.showError(event.getMessage());
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final AddDeviceAccessResponseEvent event) {
         if(event.isSuccessful()){
-
+            screen.onAddDeviceAccessSuccess();
         } else {
-
+            screen.showError(event.getMessage());
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final RemoveDeviceAccessResponseEvent event) {
         if(event.isSuccessful()){
-
+            screen.onRemoveDeviceAccessSuccess();
         } else {
-
+            screen.showError(event.getMessage());
         }
     }
 }

@@ -6,4 +6,8 @@ package hu.cewi.client.user.ui.devicecontent;
 public interface DeviceContentScreen {
 
     void showState(boolean state);
+
+    void onSetDeviceStateSuccessful();
+
+    void showError(String cause);
 }

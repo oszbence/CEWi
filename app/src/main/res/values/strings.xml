@@ -40,11 +40,16 @@
     <string name="title_activity_register_user">Register</string>
     <string name="add_device_access">Add</string>
     <string name="remove_device_access">Remove</string>
+    <string name="device_added">Device added</string>
+    <string name="device_removed">Device removed</string>
     <string name="config_device_access">Set WiFi</string>
     <string name="rename_device">Rename</string>
     <string name="config_device_select">Select device to configure</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="on">on</string>
+    <string name="off">off</string>
+    <string name="switch_state">Switch state</string>
     <string name="title_activity_device_config">Pick a WiFi network</string>
     <string name="notifications">Notifications</string>
     <string name="select_indicator">Select indicator</string>

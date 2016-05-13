@@ -13,4 +13,8 @@ public class GetDeviceStateResponseEvent extends ResponseEvent {
         super(success, msg);
         this.state = state;
     }
+
+    public boolean getState() {
+        return state;
+    }
 }

@@ -9,13 +9,39 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:baselineAligned="false"
+    android:orientation="vertical"
     tools:context="hu.cewi.client.user.ui.devices.DeviceActivity" >
+
 
     <ListView
         android:id="@+id/deviceListView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="0.8" >
     </ListView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/add_device_access"
+            android:id="@+id/addDeviceAccessButton"
+            android:onClick="onAddDeviceAccessClicked"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/remove_device_access"
+            android:id="@+id/removeDeviceAccessButton"
+            android:onClick="onRemoveDeviceAccessClicked"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>
