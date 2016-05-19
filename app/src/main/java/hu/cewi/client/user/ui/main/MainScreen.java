@@ -8,4 +8,8 @@ public interface MainScreen {
     void showDevices();
 
     void showLogin();
+
+    void onLogoutSuccess();
+
+    void onLogoutError();
 }

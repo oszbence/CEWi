@@ -63,4 +63,14 @@ public class MainActivity extends Activity implements MainScreen {
         startActivity(new Intent(this, LoginActivity.class));
     }
 
+    @Override
+    public void onLogoutSuccess() {
+        Toast.makeText(this, getString(R.string.logoutSuccess), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLogoutError() {
+        Toast.makeText(this, getString(R.string.logoutFailed), Toast.LENGTH_LONG).show();
+    }
+
 }

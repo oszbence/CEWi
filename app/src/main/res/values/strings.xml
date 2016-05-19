@@ -65,5 +65,6 @@
     <string name="valuesMustBeNumbers">Values must be numbers!</string>
     <string name="valueOf">Value of</string>
     <string name="invalidValue">Invalid value</string>
+    <string name="nothingToRemove">Nothing to remove</string>
 
 </resources>

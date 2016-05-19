@@ -118,28 +118,32 @@ public class DeviceActivity extends Activity implements DeviceScreen {
     }
 
     public void onRemoveDeviceAccessClicked(View v) {
-        // Let the user select device to remove from a list
-        final ArrayAdapter<Device> devicesAdapter = new ArrayAdapter<Device>(this, R.layout.list_item,
-                new ArrayList<Device>(deviceList));
-        final AlertDialog.Builder alert = new AlertDialog.Builder(DeviceActivity.this);
-        alert.setTitle(getString(R.string.remove_device_access));
-        alert.setAdapter(
-                devicesAdapter,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Device selected = devicesAdapter.getItem(which);
-                        // Send request to server
-                        devicePresenter.removeDeviceAccess(selected.id);
-                    }
-                });
-        alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.dismiss();
-            }
-        });
-        alert.show();
+        try {
+            // Let the user select device to remove from a list
+            final ArrayAdapter<Device> devicesAdapter = new ArrayAdapter<Device>(this, R.layout.list_item,
+                    new ArrayList<Device>(deviceList));
+            final AlertDialog.Builder alert = new AlertDialog.Builder(DeviceActivity.this);
+            alert.setTitle(getString(R.string.remove_device_access));
+            alert.setAdapter(
+                    devicesAdapter,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Device selected = devicesAdapter.getItem(which);
+                            // Send request to server
+                            devicePresenter.removeDeviceAccess(selected.id);
+                        }
+                    });
+            alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            alert.show();
+        } catch (NullPointerException e) {
+            Toast.makeText(this, getString(R.string.nothingToRemove), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

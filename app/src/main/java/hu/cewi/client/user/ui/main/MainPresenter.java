@@ -57,9 +57,13 @@ public class MainPresenter extends Presenter<MainScreen> {
             editor.remove("userID");
             editor.remove("password");
             editor.commit();
+
+            screen.onLogoutSuccess();
         } catch (NullPointerException e) {
             Log.e("Logout failed", "Cause:");
             e.printStackTrace();
+
+            screen.onLogoutError();
         }
     }
 
