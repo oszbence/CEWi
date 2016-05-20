@@ -3,10 +3,12 @@ package hu.cewi.client.user;
 import android.app.Application;
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 import hu.cewi.client.user.ui.UIModule;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Bence on 2016.04.08..
@@ -20,6 +22,7 @@ public class CEWiApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         Log.d("CEWiApplication","onCreate started");
         injector = DaggerCEWiApplicationComponent.builder().
                 uIModule(

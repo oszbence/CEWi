@@ -6,9 +6,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.annotation.Config;
 
+import hu.cewi.client.user.BuildConfig;
 import hu.cewi.client.user.ui.main.MainPresenter;
 import hu.cewi.client.user.ui.main.MainScreen;
 import hu.cewi.client.user.utils.RobolectricDaggerTestRunner;
+
+import static hu.cewi.client.user.TestHelper.setTestInjector;
+import static org.mockito.Mockito.mock;
 
 /**
  * Created by Bence on 2016.05.19..

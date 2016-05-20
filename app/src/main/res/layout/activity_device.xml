@@ -17,14 +17,14 @@
         android:id="@+id/deviceListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.8" >
+        android:layout_weight="0.9" >
     </ListView>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.2">
+        android:layout_weight="0.1">
 
         <Button
             android:layout_width="wrap_content"
@@ -32,7 +32,8 @@
             android:text="@string/add_device_access"
             android:id="@+id/addDeviceAccessButton"
             android:onClick="onAddDeviceAccessClicked"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/CEWiButtonStyle" />
 
         <Button
             android:layout_width="wrap_content"
@@ -40,7 +41,8 @@
             android:text="@string/remove_device_access"
             android:id="@+id/removeDeviceAccessButton"
             android:onClick="onRemoveDeviceAccessClicked"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/CEWiButtonStyle" />
 
     </LinearLayout>
 

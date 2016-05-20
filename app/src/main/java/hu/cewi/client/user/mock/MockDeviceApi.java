@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import hu.cewi.client.user.mock.model.MockDevice;
 import hu.cewi.client.user.model.Device;
 import hu.cewi.client.user.network.DeviceApi;
 import okhttp3.Request;

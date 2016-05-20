@@ -13,4 +13,8 @@ public class Device {
         this.name = name;
         this.id = id;
     }
+
+    public String toString() {
+        return name;
+    }
 }

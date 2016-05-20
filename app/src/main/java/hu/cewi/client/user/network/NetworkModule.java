@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import hu.cewi.client.user.mock.MockAccountApi;
+import hu.cewi.client.user.mock.MockDeviceApi;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -25,12 +27,14 @@ public class NetworkModule {
     @Provides
     @Singleton
     public AccountApi provideAccountApi(Retrofit retrofit) {
-        return retrofit.create(AccountApi.class);
+        //return retrofit.create(AccountApi.class);
+        return new MockAccountApi();
     }
 
     @Provides
     @Singleton
     public DeviceApi provideDeviceApi(Retrofit retrofit) {
-        return retrofit.create(DeviceApi.class);
+        //return retrofit.create(DeviceApi.class);
+        return new MockDeviceApi();
     }
 }

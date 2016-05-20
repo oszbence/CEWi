@@ -64,6 +64,11 @@ public class MainActivity extends Activity implements MainScreen {
 
     public void onShowAccounts(View v){
         mainPresenter.showLogin();
+
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Action")
+                .setAction("ShowLoginScreenButtonPressed")
+                .build());
     }
 
     public void onLogoutClicked(View v){
