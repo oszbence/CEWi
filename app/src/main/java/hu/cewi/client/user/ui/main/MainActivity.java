@@ -3,8 +3,12 @@ package hu.cewi.client.user.ui.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import javax.inject.Inject;
 
@@ -17,6 +21,8 @@ import hu.cewi.client.user.ui.login.LoginActivity;
 @Module
 public class MainActivity extends Activity implements MainScreen {
 
+    private Tracker mTracker;
+
     @Inject
     MainPresenter mainPresenter;
 
@@ -27,12 +33,23 @@ public class MainActivity extends Activity implements MainScreen {
 
         CEWiApplication.injector.inject(this);
 
+        // Obtain the shared Tracker instance.
+        CEWiApplication application = (CEWiApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mainPresenter.attachScreen(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mTracker.setScreenName("MainScreen");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
@@ -51,6 +68,11 @@ public class MainActivity extends Activity implements MainScreen {
 
     public void onLogoutClicked(View v){
         mainPresenter.logout();
+
+        mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("Action")
+                .setAction("Logout")
+                .build());
     }
 
     @Override
